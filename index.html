@@ -10,38 +10,51 @@
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
         }
         body {
-            background: #eef2f7;
+            background:
+              radial-gradient(ellipse 140% 60% at 95% -5%, rgba(210,165,93,0.18), transparent 52%),
+              radial-gradient(ellipse 110% 65% at 3% 105%, rgba(106,0,0,0.12), transparent 52%),
+              linear-gradient(150deg, #FFF8F2 0%, #FEF0E0 50%, #FFF4EC 100%);
             margin: 0;
             padding: 20px;
+            min-height: 100vh;
         }
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            background: white;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(24px) saturate(1.7);
+            -webkit-backdrop-filter: blur(24px) saturate(1.7);
             border-radius: 32px;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+            border: 1.5px solid rgba(210,165,93,0.2);
+            box-shadow: 0 24px 64px rgba(106,0,0,0.12), 0 2px 0 rgba(255,255,255,0.9) inset;
             overflow: hidden;
             padding: 24px 28px;
+            animation: pressIn .6s cubic-bezier(.22,1,.36,1) both;
+        }
+        @keyframes pressIn {
+            from{opacity:0;transform:translateY(20px) scale(0.98);}
+            to{opacity:1;transform:none;}
         }
         h1 {
             font-size: 1.8rem;
-            color: #1a4d6b;
-            border-left: 6px solid #2c9b77;
+            color: #6A0000;
+            border-left: 6px solid #D2A55D;
             padding-left: 18px;
             margin-top: 0;
             margin-bottom: 24px;
         }
         h2 {
             font-size: 1.4rem;
-            color: #1f5e7a;
+            color: #6A0000;
             margin: 24px 0 16px 0;
-            border-bottom: 2px solid #cbdae6;
+            border-bottom: 2px solid rgba(210,165,93,0.35);
             padding-bottom: 6px;
+            font-weight: 700;
         }
         h3 {
             font-size: 1.2rem;
             margin: 16px 0 10px 0;
-            color: #2c3e4e;
+            color: #3A0000;
         }
         .flex-row {
             display: flex;
@@ -53,7 +66,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 16px;
-            background: #f8fafc;
+            background: rgba(254,243,232,0.65);
             padding: 18px;
             border-radius: 24px;
             margin-bottom: 20px;
@@ -207,7 +220,18 @@
 <div class="container" id="app">
     <div class="press-header">
   <div class="press-header-left">
-    <img src="logo.png" alt="AN Logo" class="press-logo">
+    <div class="an-badge">
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="56" height="56" rx="14" fill="url(#bg)"/>
+        <text x="28" y="38" text-anchor="middle" font-family="Georgia,serif" font-size="26" font-weight="900" fill="#D2A55D" letter-spacing="-1">AN</text>
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="56" y2="56">
+            <stop offset="0%" stop-color="#6A0000"/>
+            <stop offset="100%" stop-color="#3A0000"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
     <div class="press-title-wrap">
       <h1 class="press-h1">AN Psixoloji Dəstək və Reabilitasiya Mərkəzi</h1>
       <span class="press-subtitle">💰 Preyskursant Pro</span>
@@ -920,6 +944,18 @@ tbody tr:hover{
   height:3px;
   background:linear-gradient(90deg,var(--an-bordo),var(--an-gold),var(--an-teal));
   border-radius:3px 3px 0 0;
+}
+
+
+/* ── AN BADGE ── */
+.an-badge{
+  flex-shrink:0;
+  filter:drop-shadow(0 4px 16px rgba(106,0,0,0.35));
+  animation:badgeFloat 4s ease-in-out infinite;
+}
+@keyframes badgeFloat{
+  0%,100%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-4px) rotate(1deg);}
 }
 
 </style>
