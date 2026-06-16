@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AN Psixoloji Mərkəz - Preyskursant Pro</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+        body {
+            background: #eef2f7;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            padding: 24px 28px;
+        }
+        h1 {
+            font-size: 1.8rem;
+            color: #1a4d6b;
+            border-left: 6px solid #2c9b77;
+            padding-left: 18px;
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+        h2 {
+            font-size: 1.4rem;
+            color: #1f5e7a;
+            margin: 24px 0 16px 0;
+            border-bottom: 2px solid #cbdae6;
+            padding-bottom: 6px;
+        }
+        h3 {
+            font-size: 1.2rem;
+            margin: 16px 0 10px 0;
+            color: #2c3e4e;
+        }
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-end;
+        }
+        .form-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            background: #f8fafc;
+            padding: 18px;
+            border-radius: 24px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 160px;
+        }
+        .input-group label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #2c5a72;
+        }
+        input, select {
+            padding: 10px 12px;
+            border: 1px solid #bdc4cc;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            background: white;
+            transition: 0.2s;
+        }
+        input:focus, select:focus {
+            border-color: #2c9b77;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(44,155,119,0.2);
+        }
+        button {
+            background: #1f6e8c;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        button:hover {
+            background: #0e4e66;
+            transform: scale(0.97);
+        }
+        .btn-secondary {
+            background: #4b6a7c;
+        }
+        .btn-success {
+            background: #2c9b77;
+        }
+        .remove-row {
+            background: none;
+            color: #bc5a3c;
+            font-size: 1.4rem;
+            padding: 0 8px;
+            box-shadow: none;
+        }
+        .remove-row:hover {
+            background: #ffe3db;
+            transform: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px 8px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: middle;
+        }
+        th {
+            background-color: #e6f0f5;
+            color: #1f5e7a;
+        }
+        .discount-block {
+            background: #fef7e0;
+            padding: 12px 16px;
+            border-radius: 24px;
+            margin: 16px 0 8px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+        }
+        .discount-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .total-box {
+            background: #eef3f2;
+            border-radius: 28px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        .total-final {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1d7a5c;
+            background: white;
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 56px;
+            margin: 8px;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+        }
+        .total-original {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            color: #6c757d;
+        }
+        .employee-badge {
+            background: #e1ecf4;
+            padding: 4px 12px;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 4px 6px 4px 0;
+            font-size: 0.8rem;
+        }
+        .status-msg {
+            font-size:0.85rem;
+            color:#2c9b77;
+            margin-top: -8px;
+            margin-bottom: 12px;
+        }
+        footer {
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 28px;
+            color: #8aa0ae;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 16px; }
+            th, td { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="app">
+    <h1>🧾 AN Psixoloji Dəstək və Reabilitasiya Mərkəzi <span style="font-size:0.9rem;">| Preyskursant Pro</span></h1>
+
+    <!-- === PASİENT BÖLMƏSİ === -->
+    <h2>👪 1. Pasient məlumatları</h2>
+    <div class="form-grid">
+        <div class="input-group"><label>Uşağın adı</label><input type="text" id="childName" placeholder="Ad"></div>
+        <div class="input-group"><label>Uşağın soyadı</label><input type="text" id="childSurname" placeholder="Soyad"></div>
+        <div class="input-group"><label>Valideyn telefonu</label><input type="tel" id="parentPhone" placeholder="+994 XX XXX XX XX"></div>
+        <div style="display: flex; align-items: flex-end;"><button id="addPatientBtn" class="btn-success">💾 Pasient yadda saxla</button></div>
+    </div>
+    <div id="patientStatus" class="status-msg"></div>
+
+    <!-- === ƏMƏKDAŞ BÖLMƏSİ === -->
+    <h2>👩‍🏫 2. Əməkdaşlar (məşğələlər üçün)</h2>
+    <div class="flex-row" style="margin-bottom: 12px;">
+        <div class="input-group"><label>Əməkdaşın adı</label><input type="text" id="employeeName" placeholder="Məs: Aytən xanım"></div>
+        <button id="addEmployeeBtn">➕ Əməkdaş əlavə et</button>
+    </div>
+    <div id="employeeListContainer" style="margin-bottom: 12px; min-height: 48px;"></div>
+
+    <!-- === MƏŞĞƏLƏLƏR === -->
+    <h2>📚 3. Məşğələlər (seanslar)</h2>
+    <div style="overflow-x: auto;">
+        <table id="sessionsTable">
+            <thead>
+                <tr><th>Məşğələ adı</th><th>Sayı</th><th>Qiymət (vahid/₼)</th><th>Əməkdaş</th><th style="width:50px"></th></tr>
+            </thead>
+            <tbody id="sessionsTbody"></tbody>
+        </table>
+    </div>
+    <button id="addSessionRowBtn" class="btn-secondary" style="margin-top: 4px;">+ Yeni məşğələ sətri</button>
+
+    <!-- Məşğələlər endirim bloku -->
+    <div class="discount-block" id="sessionsDiscountBlock">
+        <div class="discount-item"><input type="checkbox" id="sessDiscountEnable"> <label>🏷️ Məşğələlərə endirim tətbiq et</label></div>
+        <div class="discount-item"><label>Endirim faizi (%)</label> <input type="number" id="sessDiscountPercent" value="0" min="0" max="100" step="1" style="width:80px;"></div>
+        <div class="discount-item"><span>🔹 Cari real cəmi: <strong id="sessRealTotal">0.00</strong> ₼</span> <span>🔸 Endirimli: <strong id="sessDiscTotal">0.00</strong> ₼</span></div>
+    </div>
+
+    <!-- === YEMƏK BÖLMƏSİ === -->
+    <h2>🍽️ 4. Yemək xidməti</h2>
+    <div class="form-grid">
+        <div class="input-group"><label>Neçə dəfə (gün/vaxt)</label><input type="number" id="mealCount" value="1" min="0" step="1"></div>
+        <div class="input-group"><label>Yemək saatı</label><input type="text" id="mealTime" placeholder="Məs: 13:00 - 14:00"></div>
+        <div class="input-group"><label>Ümumi məbləğ (₼)</label><input type="number" id="mealPrice" value="0" step="0.5" min="0"></div>
+    </div>
+    <div class="discount-block">
+        <div class="discount-item"><input type="checkbox" id="mealDiscountEnable"> <label>🍲 Yemək xidmətinə endirim</label></div>
+        <div class="discount-item"><label>Endirim faizi (%)</label> <input type="number" id="mealDiscountPercent" value="0" min="0" max="100" step="1" style="width:80px;"></div>
+        <div class="discount-item"><span>Real: <strong id="mealRealTotal">0.00</strong> ₼</span> <span>Endirimli: <strong id="mealDiscTotal">0.00</strong> ₼</span></div>
+    </div>
+
+    <!-- === DAYƏ XİDMƏTİ === -->
+    <h2>👶 5. Dayə xidməti</h2>
+    <div class="form-grid">
+        <div class="input-group"><label>Dayə xidməti qiyməti (₼)</label><input type="number" id="nannyPrice" value="0" step="0.5" min="0"></div>
+    </div>
+    <div class="discount-block">
+        <div class="discount-item"><input type="checkbox" id="nannyDiscountEnable"> <label>🤱 Dayə xidmətinə endirim</label></div>
+        <div class="discount-item"><label>Endirim faizi (%)</label> <input type="number" id="nannyDiscountPercent" value="0" min="0" max="100" step="1" style="width:80px;"></div>
+        <div class="discount-item"><span>Real: <strong id="nannyRealTotal">0.00</strong> ₼</span> <span>Endirimli: <strong id="nannyDiscTotal">0.00</strong> ₼</span></div>
+    </div>
+
+    <!-- === YEKUN HESABAT (PREVIEW) === -->
+    <div class="total-box">
+        <h3 style="margin:0 0 12px 0;">💎 Yekun hesabat (real / endirimli)</h3>
+        <div style="font-size: 1.3rem;">
+            <span class="total-original" id="grandRealSpan">0.00 ₼</span> &nbsp; → &nbsp;
+            <span id="grandDiscountedSpan" style="font-weight:800; font-size:2rem; background:#e0f0ea; padding:6px 24px; border-radius: 60px;">0.00 ₼</span>
+        </div>
+        <div style="margin-top:12px; font-size:0.85rem;">* Endirimli məbləğ seçilmiş əsas məbləğdir</div>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; margin-top: 35px; gap: 20px;">
+        <button id="generateFileBtn" class="btn-success" style="font-size: 1rem; padding: 14px 28px;">📄 Fayl yarat (HTML çıxarış)</button>
+    </div>
+    <footer>Bütün məlumatlar avtomatik yadda saxlanılır. Hər bölmə üçün ayrıca endirim tətbiq edə bilərsiniz.</footer>
+</div>
+
+<script>
+    // ---------- STORAGE KEYS ----------
+    const STORAGE_KEYS = {
+        PATIENT: 'an_center_patient',
+        EMPLOYEES: 'an_center_employees',
+        SESSIONS_ROWS: 'an_center_sessions_rows',
+        SESS_DISC_ENABLE: 'an_center_sess_disc_enable',
+        SESS_DISC_PERCENT: 'an_center_sess_disc_percent',
+        MEAL_COUNT: 'an_center_meal_count',
+        MEAL_TIME: 'an_center_meal_time',
+        MEAL_PRICE: 'an_center_meal_price',
+        MEAL_DISC_ENABLE: 'an_center_meal_disc_enable',
+        MEAL_DISC_PERCENT: 'an_center_meal_disc_percent',
+        NANNY_PRICE: 'an_center_nanny_price',
+        NANNY_DISC_ENABLE: 'an_center_nanny_disc_enable',
+        NANNY_DISC_PERCENT: 'an_center_nanny_disc_percent'
+    };
+
+    // ---------- GLOBAL STATE ----------
+    let employees = [];
+    let nextEmpId = 1;
+    let sessionRowsData = [];
+
+    // DOM references
+    const employeeNameInput = document.getElementById('employeeName');
+    const addEmployeeBtn = document.getElementById('addEmployeeBtn');
+    const employeeListDiv = document.getElementById('employeeListContainer');
+    const sessionsTbody = document.getElementById('sessionsTbody');
+    const addSessionRowBtn = document.getElementById('addSessionRowBtn');
+    const addPatientBtn = document.getElementById('addPatientBtn');
+    const childNameInp = document.getElementById('childName');
+    const childSurnameInp = document.getElementById('childSurname');
+    const parentPhoneInp = document.getElementById('parentPhone');
+    const patientStatusSpan = document.getElementById('patientStatus');
+
+    const sessDiscountEnable = document.getElementById('sessDiscountEnable');
+    const sessDiscountPercent = document.getElementById('sessDiscountPercent');
+    const mealDiscountEnable = document.getElementById('mealDiscountEnable');
+    const mealDiscountPercent = document.getElementById('mealDiscountPercent');
+    const nannyDiscountEnable = document.getElementById('nannyDiscountEnable');
+    const nannyDiscountPercent = document.getElementById('nannyDiscountPercent');
+    const mealCount = document.getElementById('mealCount');
+    const mealTime = document.getElementById('mealTime');
+    const mealPrice = document.getElementById('mealPrice');
+    const nannyPrice = document.getElementById('nannyPrice');
+
+    const sessRealTotalSpan = document.getElementById('sessRealTotal');
+    const sessDiscTotalSpan = document.getElementById('sessDiscTotal');
+    const mealRealTotalSpan = document.getElementById('mealRealTotal');
+    const mealDiscTotalSpan = document.getElementById('mealDiscTotal');
+    const nannyRealTotalSpan = document.getElementById('nannyRealTotal');
+    const nannyDiscTotalSpan = document.getElementById('nannyDiscTotal');
+    const grandRealSpan = document.getElementById('grandRealSpan');
+    const grandDiscountedSpan = document.getElementById('grandDiscountedSpan');
+
+    // ---------- UTILITIES ----------
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) { return c; });
+    }
+
+    function savePatientToStorage() {
+        const patient = {
+            name: childNameInp.value.trim(),
+            surname: childSurnameInp.value.trim(),
+            phone: parentPhoneInp.value.trim()
+        };
+        localStorage.setItem(STORAGE_KEYS.PATIENT, JSON.stringify(patient));
+    }
+
+    function loadPatientFromStorage() {
+        const stored = localStorage.getItem(STORAGE_KEYS.PATIENT);
+        if (stored) {
+            try {
+                const p = JSON.parse(stored);
+                childNameInp.value = p.name || '';
+                childSurnameInp.value = p.surname || '';
+                parentPhoneInp.value = p.phone || '';
+            } catch(e) {}
+        }
+    }
+
+    function saveEmployeesToStorage() {
+        localStorage.setItem(STORAGE_KEYS.EMPLOYEES, JSON.stringify(employees));
+    }
+
+    function loadEmployeesFromStorage() {
+        const stored = localStorage.getItem(STORAGE_KEYS.EMPLOYEES);
+        if (stored) {
+            try {
+                const loaded = JSON.parse(stored);
+                if (Array.isArray(loaded)) {
+                    employees = loaded;
+                    if (employees.length === 0) {
+                        employees = [{ id: "emp_default", name: "Seçilməyib / təyin edilməyib" }];
+                        nextEmpId = 1;
+                    } else {
+                        let maxId = 0;
+                        employees.forEach(e => {
+                            if (e.id && typeof e.id === 'string' && e.id.startsWith('emp_')) {
+                                const num = parseInt(e.id.split('_')[1]);
+                                if (!isNaN(num) && num > maxId) maxId = num;
+                            }
+                        });
+                        nextEmpId = maxId + 1;
+                    }
+                } else {
+                    initDefaultEmployees();
+                }
+            } catch(e) { initDefaultEmployees(); }
+        } else {
+            initDefaultEmployees();
+        }
+        renderEmployeeList();
+    }
+
+    function initDefaultEmployees() {
+        employees = [{ id: "emp_default", name: "Seçilməyib / təyin edilməyib" }];
+        nextEmpId = 1;
+        saveEmployeesToStorage();
+    }
+
+    function saveSessionRowsToStorage() {
+        localStorage.setItem(STORAGE_KEYS.SESSIONS_ROWS, JSON.stringify(sessionRowsData));
+    }
+
+    function loadSessionRowsFromStorage() {
+        const stored = localStorage.getItem(STORAGE_KEYS.SESSIONS_ROWS);
+        if (stored) {
+            try {
+                sessionRowsData = JSON.parse(stored);
+                if (!Array.isArray(sessionRowsData)) sessionRowsData = [];
+            } catch(e) { sessionRowsData = []; }
+        } else {
+            sessionRowsData = [
+                { name: 'Fərdi Psixoloji Dəstək', count: 4, price: 35, employeeId: 'emp_default' },
+                { name: 'Qrup terapiyası', count: 2, price: 20, employeeId: 'emp_default' }
+            ];
+        }
+        renderAllSessionRows();
+    }
+
+    function renderAllSessionRows() {
+        sessionsTbody.innerHTML = '';
+        sessionRowsData.forEach((row, idx) => {
+            const tr = createSessionRowElement(row, idx);
+            sessionsTbody.appendChild(tr);
+        });
+        recalcAllTotals();
+        saveSessionRowsToStorage();
+    }
+
+    function createSessionRowElement(rowData, index) {
+        const tr = document.createElement('tr');
+        const tdName = document.createElement('td');
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.placeholder = 'Məşğələ adı';
+        nameInput.value = rowData.name || '';
+        nameInput.style.width = '130px';
+        tdName.appendChild(nameInput);
+
+        const tdCount = document.createElement('td');
+        const countInput = document.createElement('input');
+        countInput.type = 'number';
+        countInput.value = rowData.count;
+        countInput.min = 1;
+        countInput.step = 1;
+        countInput.style.width = '80px';
+        tdCount.appendChild(countInput);
+
+        const tdPrice = document.createElement('td');
+        const priceInput = document.createElement('input');
+        priceInput.type = 'number';
+        priceInput.step = '0.5';
+        priceInput.value = rowData.price;
+        priceInput.style.width = '90px';
+        tdPrice.appendChild(priceInput);
+
+        const tdEmp = document.createElement('td');
+        const empSelect = document.createElement('select');
+        empSelect.classList.add('emp-select');
+        employees.forEach(emp => {
+            const opt = document.createElement('option');
+            opt.value = emp.id;
+            opt.textContent = emp.name;
+            empSelect.appendChild(opt);
+        });
+        let currentEmpId = rowData.employeeId;
+        if (currentEmpId && employees.some(e => e.id === currentEmpId)) empSelect.value = currentEmpId;
+        else if (employees.length) empSelect.value = employees[0].id;
+        tdEmp.appendChild(empSelect);
+
+        const tdAction = document.createElement('td');
+        const delBtn = document.createElement('button');
+        delBtn.textContent = '✖';
+        delBtn.classList.add('remove-row');
+        delBtn.onclick = () => {
+            sessionRowsData.splice(index, 1);
+            renderAllSessionRows();
+        };
+        tdAction.appendChild(delBtn);
+
+        tr.appendChild(tdName);
+        tr.appendChild(tdCount);
+        tr.appendChild(tdPrice);
+        tr.appendChild(tdEmp);
+        tr.appendChild(tdAction);
+
+        const updateRowData = () => {
+            sessionRowsData[index] = {
+                name: nameInput.value,
+                count: parseFloat(countInput.value) || 0,
+                price: parseFloat(priceInput.value) || 0,
+                employeeId: empSelect.value
+            };
+            recalcAllTotals();
+            saveSessionRowsToStorage();
+        };
+        nameInput.addEventListener('input', updateRowData);
+        countInput.addEventListener('input', updateRowData);
+        priceInput.addEventListener('input', updateRowData);
+        empSelect.addEventListener('change', updateRowData);
+        return tr;
+    }
+
+    function addEmptySessionRow() {
+        sessionRowsData.push({ name: '', count: 1, price: 0, employeeId: employees[0]?.id || 'emp_default' });
+        renderAllSessionRows();
+    }
+
+    function renderEmployeeList() {
+        if (!employeeListDiv) return;
+        employeeListDiv.innerHTML = employees.map(emp => `<span class="employee-badge">👤 ${escapeHtml(emp.name)}</span>`).join('') || '<span class="employee-badge">Hələ əməkdaş yoxdur</span>';
+        renderAllSessionRows();
+        saveEmployeesToStorage();
+    }
+
+    function addEmployee(name) {
+        if (!name.trim()) return alert('Əməkdaş adını daxil edin');
+        const newId = 'emp_' + (nextEmpId++);
+        employees.push({ id: newId, name: name.trim() });
+        renderEmployeeList();
+        employeeNameInput.value = '';
+    }
+
+    function getSessionsTotals() {
+        let realSum = 0;
+        for (let row of sessionRowsData) {
+            const count = row.count || 0;
+            const price = row.price || 0;
+            realSum += count * price;
+        }
+        const applyDiscount = sessDiscountEnable.checked;
+        let percent = parseFloat(sessDiscountPercent.value) || 0;
+        percent = Math.min(100, Math.max(0, percent));
+        let discounted = applyDiscount ? realSum * (1 - percent / 100) : realSum;
+        return { real: realSum, discounted: discounted };
+    }
+
+    function getMealTotal() {
+        let real = parseFloat(mealPrice.value) || 0;
+        const applyDiscount = mealDiscountEnable.checked;
+        let percent = parseFloat(mealDiscountPercent.value) || 0;
+        percent = Math.min(100, Math.max(0, percent));
+        let discounted = applyDiscount ? real * (1 - percent / 100) : real;
+        return { real, discounted };
+    }
+
+    function getNannyTotal() {
+        let real = parseFloat(nannyPrice.value) || 0;
+        const applyDiscount = nannyDiscountEnable.checked;
+        let percent = parseFloat(nannyDiscountPercent.value) || 0;
+        percent = Math.min(100, Math.max(0, percent));
+        let discounted = applyDiscount ? real * (1 - percent / 100) : real;
+        return { real, discounted };
+    }
+
+    function recalcAllTotals() {
+        const sess = getSessionsTotals();
+        const meal = getMealTotal();
+        const nanny = getNannyTotal();
+
+        sessRealTotalSpan.innerText = sess.real.toFixed(2);
+        sessDiscTotalSpan.innerText = sess.discounted.toFixed(2);
+        mealRealTotalSpan.innerText = meal.real.toFixed(2);
+        mealDiscTotalSpan.innerText = meal.discounted.toFixed(2);
+        nannyRealTotalSpan.innerText = nanny.real.toFixed(2);
+        nannyDiscTotalSpan.innerText = nanny.discounted.toFixed(2);
+
+        const grandReal = sess.real + meal.real + nanny.real;
+        const grandDiscounted = sess.discounted + meal.discounted + nanny.discounted;
+        grandRealSpan.innerText = grandReal.toFixed(2) + ' ₼';
+        grandDiscountedSpan.innerText = grandDiscounted.toFixed(2) + ' ₼';
+    }
+
+    function saveAllMiscToStorage() {
+        localStorage.setItem(STORAGE_KEYS.SESS_DISC_ENABLE, sessDiscountEnable.checked);
+        localStorage.setItem(STORAGE_KEYS.SESS_DISC_PERCENT, sessDiscountPercent.value);
+        localStorage.setItem(STORAGE_KEYS.MEAL_COUNT, mealCount.value);
+        localStorage.setItem(STORAGE_KEYS.MEAL_TIME, mealTime.value);
+        localStorage.setItem(STORAGE_KEYS.MEAL_PRICE, mealPrice.value);
+        localStorage.setItem(STORAGE_KEYS.MEAL_DISC_ENABLE, mealDiscountEnable.checked);
+        localStorage.setItem(STORAGE_KEYS.MEAL_DISC_PERCENT, mealDiscountPercent.value);
+        localStorage.setItem(STORAGE_KEYS.NANNY_PRICE, nannyPrice.value);
+        localStorage.setItem(STORAGE_KEYS.NANNY_DISC_ENABLE, nannyDiscountEnable.checked);
+        localStorage.setItem(STORAGE_KEYS.NANNY_DISC_PERCENT, nannyDiscountPercent.value);
+    }
+
+    function loadAllMiscFromStorage() {
+        sessDiscountEnable.checked = localStorage.getItem(STORAGE_KEYS.SESS_DISC_ENABLE) === 'true';
+        sessDiscountPercent.value = localStorage.getItem(STORAGE_KEYS.SESS_DISC_PERCENT) || '0';
+        mealCount.value = localStorage.getItem(STORAGE_KEYS.MEAL_COUNT) || '1';
+        mealTime.value = localStorage.getItem(STORAGE_KEYS.MEAL_TIME) || '';
+        mealPrice.value = localStorage.getItem(STORAGE_KEYS.MEAL_PRICE) || '0';
+        mealDiscountEnable.checked = localStorage.getItem(STORAGE_KEYS.MEAL_DISC_ENABLE) === 'true';
+        mealDiscountPercent.value = localStorage.getItem(STORAGE_KEYS.MEAL_DISC_PERCENT) || '0';
+        nannyPrice.value = localStorage.getItem(STORAGE_KEYS.NANNY_PRICE) || '0';
+        nannyDiscountEnable.checked = localStorage.getItem(STORAGE_KEYS.NANNY_DISC_ENABLE) === 'true';
+        nannyDiscountPercent.value = localStorage.getItem(STORAGE_KEYS.NANNY_DISC_PERCENT) || '0';
+        recalcAllTotals();
+    }
+
+    function generateOutputFile() {
+        const childName = childNameInp.value.trim();
+        const childSurname = childSurnameInp.value.trim();
+        const parentPhone = parentPhoneInp.value.trim();
+        const patientText = (childName || childSurname || parentPhone) ? `${childName} ${childSurname} (Tel: ${parentPhone})` : 'Məlumat daxil edilməyib';
+
+        const sessionRowsDisplay = sessionRowsData.map(row => {
+            const empFound = employees.find(e => e.id === row.employeeId);
+            const empName = empFound ? empFound.name : 'Təyin edilməyib';
+            const totalReal = (row.count || 0) * (row.price || 0);
+            return {
+                name: row.name || 'Ad verilməyib',
+                count: row.count,
+                price: row.price,
+                totalReal: totalReal,
+                employee: empName
+            };
+        });
+
+        const sessTotals = getSessionsTotals();
+        const mealTotals = getMealTotal();
+        const nannyTotals = getNannyTotal();
+        const grandReal = sessTotals.real + mealTotals.real + nannyTotals.real;
+        const grandDisc = sessTotals.discounted + mealTotals.discounted + nannyTotals.discounted;
+
+        const mealCountVal = mealCount.value;
+        const mealTimeVal = mealTime.value;
+
+        const sessDiscApplied = sessDiscountEnable.checked;
+        const sessDiscPercentVal = sessDiscountPercent.value;
+        const mealDiscApplied = mealDiscountEnable.checked;
+        const mealDiscPercentVal = mealDiscountPercent.value;
+        const nannyDiscApplied = nannyDiscountEnable.checked;
+        const nannyDiscPercentVal = nannyDiscountPercent.value;
+
+        const outputHtml = `<!DOCTYPE html>
+        <html lang="az">
+        <head><meta charset="UTF-8"><title>Preyskursant - AN Mərkəz</title>
+        <style>
+            body { font-family: 'Segoe UI', sans-serif; max-width: 1000px; margin: 30px auto; padding: 25px; background: #f5f9fc; }
+            .document { background: white; border-radius: 28px; padding: 35px; box-shadow: 0 12px 28px rgba(0,0,0,0.1); }
+            .header { text-align: center; border-bottom: 3px solid #2c9b77; padding-bottom: 20px; margin-bottom: 28px; }
+            .header h1 { margin: 0; color: #1a4d6b; font-size: 1.9rem; }
+            .patient-info { background: #eef3f2; border-radius: 24px; padding: 12px 20px; margin-bottom: 28px; }
+            table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+            th, td { border: 1px solid #cbdbe2; padding: 10px; text-align: left; vertical-align: top; }
+            th { background: #e2f0ed; }
+            .total-section { margin-top: 28px; background: #faf3e0; border-radius: 24px; padding: 18px; text-align: right; }
+            .grand-total { font-size: 2.2rem; font-weight: bold; background: #1d7a5c; display: inline-block; padding: 12px 32px; border-radius: 60px; color: white; margin-top: 12px; }
+            .original-line { text-decoration: line-through; color: #6c6f78; font-size: 1.2rem; }
+            .signature { margin-top: 42px; text-align: right; font-style: italic; border-top: 1px solid #c0d4df; padding-top: 25px; font-weight: 500; }
+            .discount-note { font-size: 0.8rem; color: #1f6e4a; background: #e9f5f0; display: inline-block; padding: 3px 12px; border-radius: 20px; margin-top: 5px; }
+            .price-compare { display: inline-block; margin-left: 12px; }
+        </style>
+        </head>
+        <body>
+        <div class="document">
+            <div class="header">
+                <h1>🧠 AN psixoloji dəstək və reabilitasiya mərkəzi</h1>
+                <p>📌 Preyskursant / Xidmət hesabı (rəsmi və endirimli qiymətlər)</p>
+            </div>
+            <div class="patient-info">
+                <strong>👶 Pasient məlumatı:</strong> ${escapeHtml(patientText)}<br>
+                <small>Sənəd tarixi: ${new Date().toLocaleDateString('az-AZ')}</small>
+            </div>
+            
+            <h3>📖 Məşğələlər (seanslar)</h3>
+            ${sessionRowsDisplay.length === 0 ? '<p><i>Məşğələ əlavə edilməyib</i></p>' : `
+            <table>
+                <thead><tr><th>Məşğələ adı</th><th>Sayı</th><th>Vahid qiymət (₼)</th><th>Cəmi (rəsmi)</th><th>Əməkdaş</th></tr></thead>
+                <tbody>
+                    ${sessionRowsDisplay.map(s => `<tr><td>${escapeHtml(s.name)}</td><td>${s.count}</td><td>${s.price.toFixed(2)}</td><td>${s.totalReal.toFixed(2)} ₼</td><td>${escapeHtml(s.employee)}</td></tr>`).join('')}
+                </tbody>
+            </table>
+            `}
+            <div><strong>🔹 Məşğələlər rəsmi cəmi:</strong> ${sessTotals.real.toFixed(2)} ₼<br>
+            ${sessDiscApplied ? `<span class="discount-note">✨ ${sessDiscPercentVal}% endirim tətbiq edilib → endirimli məbləğ: ${sessTotals.discounted.toFixed(2)} ₼</span>` : `<span>Endirim tətbiq edilməyib</span>`}</div>
+            
+            <h3>🍽️ Yemək xidməti</h3>
+            <div>Neçə dəfə: ${mealCountVal} &nbsp; | Saat: ${escapeHtml(mealTimeVal)}</div>
+            <div><strong>Rəsmi qiymət:</strong> ${mealTotals.real.toFixed(2)} ₼</div>
+            ${mealDiscApplied ? `<div class="discount-note">✨ Yeməkdə ${mealDiscPercentVal}% endirim → endirimli məbləğ: ${mealTotals.discounted.toFixed(2)} ₼</div>` : '<div>Yeməyə endirim tətbiq edilməyib</div>'}
+
+            <h3>👶 Dayə xidməti</h3>
+            <div><strong>Rəsmi qiymət:</strong> ${nannyTotals.real.toFixed(2)} ₼</div>
+            ${nannyDiscApplied ? `<div class="discount-note">✨ Dayə xidmətində ${nannyDiscPercentVal}% endirim → endirimli: ${nannyTotals.discounted.toFixed(2)} ₼</div>` : '<div>Dayə xidmətinə endirim tətbiq edilməyib</div>'}
+
+            <div class="total-section">
+                <div style="font-size: 1.3rem;">Ümumi rəsmi məbləğ: <span class="original-line">${grandReal.toFixed(2)} ₼</span></div>
+                <div class="grand-total">✅ Ödəniləcək son məbləğ (endirimli): ${grandDisc.toFixed(2)} ₼</div>
+                <div style="margin-top: 8px; font-weight: bold;">*Yekun endirimli qiymət əsas götürülür</div>
+            </div>
+            <div class="signature">
+                Mərkəzin direktoru: <strong>Nahidə Axundova</strong><br>
+                <span style="font-size: 0.8rem;">Rəqəmsal imza və möhür</span>
+            </div>
+            <footer style="margin-top:25px; text-align:center; font-size:0.7rem;">Bu sənəd AN Psixoloji Mərkəz tərəfindən yaradılmış rəsmi preyskursantdır.</footer>
+        </div>
+        </body>
+        </html>`;
+
+        const blob = new Blob([outputHtml], { type: 'text/html' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.href = url;
+        link.download = `preyskursant_${childName || 'pasient'}_${Date.now()}.html`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }
+
+    function bindMiscAutoSave() {
+        const miscElements = [sessDiscountEnable, sessDiscountPercent, mealDiscountEnable, mealDiscountPercent, nannyDiscountEnable, nannyDiscountPercent, mealCount, mealTime, mealPrice, nannyPrice];
+        miscElements.forEach(el => {
+            el.addEventListener('input', () => {
+                recalcAllTotals();
+                saveAllMiscToStorage();
+            });
+            el.addEventListener('change', () => {
+                recalcAllTotals();
+                saveAllMiscToStorage();
+            });
+        });
+    }
+
+    function init() {
+        loadPatientFromStorage();
+        loadEmployeesFromStorage();
+        loadSessionRowsFromStorage();
+        loadAllMiscFromStorage();
+        bindMiscAutoSave();
+
+        addPatientBtn.addEventListener('click', () => {
+            savePatientToStorage();
+            patientStatusSpan.innerText = '✅ Pasient məlumatları yadda saxlanıldı.';
+            setTimeout(() => { patientStatusSpan.innerText = ''; }, 2000);
+        });
+        addEmployeeBtn.addEventListener('click', () => addEmployee(employeeNameInput.value));
+        addSessionRowBtn.addEventListener('click', addEmptySessionRow);
+        document.getElementById('generateFileBtn').addEventListener('click', generateOutputFile);
+
+        childNameInp.addEventListener('input', savePatientToStorage);
+        childSurnameInp.addEventListener('input', savePatientToStorage);
+        parentPhoneInp.addEventListener('input', savePatientToStorage);
+        recalcAllTotals();
+    }
+
+    init();
+</script>
+</body>
+</html>
