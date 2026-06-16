@@ -723,12 +723,16 @@ body{
   gap:16px;
 }
 .press-logo{
-  width:72px;
-  height:72px;
-  object-fit:contain;
+  width:72px !important;
+  height:72px !important;
+  max-width:72px !important;
+  max-height:72px !important;
+  min-width:72px !important;
+  object-fit:contain !important;
   filter:drop-shadow(0 4px 16px rgba(210,165,93,0.4));
   animation:logoFloat 4s ease-in-out infinite;
-  flex-shrink:0;
+  flex-shrink:0 !important;
+  display:block !important;
 }
 @keyframes logoFloat{
   0%,100%{transform:translateY(0);}
